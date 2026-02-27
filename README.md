@@ -1,4 +1,4 @@
-# SvelteKit Auth App
+# SvelteKit Auth App (AuthKit)
 
 A full-stack authentication application built with SvelteKit (Svelte 5), Auth.js, TailwindCSS, PostgreSQL, and Drizzle ORM.
 
@@ -6,9 +6,12 @@ A full-stack authentication application built with SvelteKit (Svelte 5), Auth.js
 
 - Email/password registration and login
 - OAuth authentication (Google & GitHub)
+- Email verification with secure tokens
+- Password reset / forgot password flow
 - Protected routes with auth guards
 - User profile management
 - Dashboard with app statistics
+- Animated landing page with branded AuthKit logo
 - Responsive UI with TailwindCSS
 - Database sessions with Drizzle ORM + PostgreSQL
 
@@ -72,23 +75,36 @@ A full-stack authentication application built with SvelteKit (Svelte 5), Auth.js
 src/
 ├── lib/
 │   ├── auth.ts                   # Auth.js configuration
+│   ├── index.ts                  # Lib barrel export
+│   ├── assets/
+│   │   └── favicon.svg           # App favicon
 │   ├── components/
+│   │   ├── Logo.svelte           # Reusable SVG shield logo (AuthKit branding)
 │   │   ├── Navbar.svelte         # Navigation bar
 │   │   └── OAuthButtons.svelte   # Google & GitHub sign-in buttons
 │   └── server/
+│       ├── email.ts              # Email sending utility (SMTP)
+│       ├── token.ts              # Secure token generation
 │       └── db/
 │           ├── index.ts          # Drizzle client
 │           └── schema.ts         # Database schema
 ├── routes/
 │   ├── +layout.svelte            # Root layout with Navbar
 │   ├── +layout.server.ts         # Session loader
-│   ├── +page.svelte              # Landing page
+│   ├── +page.svelte              # Animated landing page
 │   ├── login/                    # Login page
 │   ├── register/                 # Registration page
 │   ├── dashboard/                # Protected dashboard
-│   └── profile/                  # Protected profile page
+│   ├── profile/                  # Protected profile page
+│   └── auth/
+│       ├── forgot-password/      # Forgot password page
+│       ├── reset-password/       # Reset password page
+│       └── verify-email/         # Email verification
+│           ├── check-email/      # "Check your email" prompt
+│           └── resend/           # Resend verification email
 ├── hooks.server.ts               # Auth.js request handler
-├── app.css                       # TailwindCSS entry
+├── app.css                       # TailwindCSS + custom animations
+├── app.d.ts                      # TypeScript declarations
 └── app.html                      # HTML template
 ```
 
