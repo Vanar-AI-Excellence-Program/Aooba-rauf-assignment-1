@@ -73,6 +73,13 @@ A full-stack authentication application built with SvelteKit (Svelte 5), Auth.js
 
    The app will be available at `http://localhost:5173`.
 
+7. ** also suse drizzlestudio**
+    npm i drizzle-orm
+    npm i -D drizzle-kit
+    npx drizzle-kit studio
+
+       
+
 ## Project Structure
 
 ```
